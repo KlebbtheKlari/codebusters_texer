@@ -1,10 +1,10 @@
-import re
-
 ######
 # Utility functions for cipher implementations
 # Several of these are just renaming already known functions
 # so they reflect more closely what it is I want in name
 ######
+
+import re
 
 # removes repeated letters in a string
 # input: string of letters in all caps (ex "EXAMPLE")
