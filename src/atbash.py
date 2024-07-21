@@ -30,12 +30,3 @@ class Atbash:
             else:
                 ret += i
         return ret
-    
-    def get_val(self):
-        return self.val
-    
-    def get_ct(self):
-        return self.ct
-    
-    def get_pt(self):
-        return self.pt
