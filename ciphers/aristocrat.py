@@ -34,5 +34,6 @@ def aristo_encoder(s, pt_alphabet, ct_alphabet):
         mapping[i] = ct[i]
 
 def random_aristo(s):
-    return aristo_encoder(s,alphabet,gen_random_alphabet())
+    ct = gen_random_alphabet()
+    return aristo_encoder(s,alphabet,ct)
 
