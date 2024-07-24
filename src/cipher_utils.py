@@ -55,3 +55,5 @@ def string_to_nums(s):
     for i in list(letters):
         ret.append(letter_to_num(i))
     return ret
+
+
