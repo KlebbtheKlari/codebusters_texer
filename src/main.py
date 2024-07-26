@@ -1,12 +1,19 @@
 import csv
 
-import cipher_utils
+from cipher_utils import *
 
 import affine
+import aristocrat
 import atbash
+import baconian
 import caesar
+import columnar
+import fracmorse
 import hill
-import monoalphabetic
+import nihilist
+import patristocrat
+import porta
+import xenocrypt
 
 filename = ''
 

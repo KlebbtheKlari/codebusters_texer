@@ -1,6 +1,6 @@
 ######
 # Aristocrats
-# including K1, K2, K3, Xeno, Pats
+# including K1, K2, K3
 # Frequency tables available as a util
 ######
 
@@ -13,7 +13,6 @@ class Monoalphabetic:
     def __init__(self, plaintext,value,cipher,type,alphabet=None):
         self.pt = plaintext
         self.val = value
-        self.cipher = cipher
         self.type = type
         
         if (alphabet == None):
