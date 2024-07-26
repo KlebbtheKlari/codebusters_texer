@@ -8,7 +8,8 @@ from cipher_utils import *
 class Affine:
     # string pt, string ct, int val, tuple (int,int) key
     
-    def __init__(self, plaintext, value, key):
+    def __init__(self, type, plaintext, value, key):
+        self.type = type
         self.pt = plaintext
         self.val = value
         self.key = key
