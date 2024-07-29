@@ -2,7 +2,7 @@ from cipher_utils import *
 from math import sqrt
 
 class Hill:
-    def __init__(self, plaintext,value,key):
+    def __init__(self, plaintext,value,key,bonus):
         self.pt = plaintext.upper()
         self.key = key.upper()
         self.size = int(sqrt(len(self.key)))
@@ -13,6 +13,7 @@ class Hill:
         self.val = value
         self.encmatrix = self.key_to_matrix()
         self.ct = self.hill_encode()
+        self.bonus = bonus
         
         if (self.size > 4):
             self.decmatrix = self.invert()
