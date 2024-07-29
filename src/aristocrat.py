@@ -14,18 +14,23 @@ class Aristocrat:
     # note: variable k is an integer in [1,2,3] for K-k alphabet
     def __init__(self, plaintext,value,type,key=None,shift=None,k=None):
         self.pt = plaintext.upper()
-        self.val = value
-        self.type = type
+        self.val = int(value)
+        self.type = type.upper()
         
         if (k == None):
-            self.alphabet = ""
             self.ct = self.random_aristo(plaintext)
         else:
-            self.k = k
-            self.key = key
-            self.shift = shift
-        # Generate pt-ct mapping
-        # Encode (& parse if pat), store ct
+            self.k = int(k)
+            self.key = key.upper()
+            self.shift = int(shift)
+            k_alph = self.gen_k_alphabet(self.key,self.shift)
+            if (k == 1):
+                self.ct = self.aristo_encoder(self.pt,k_alph,alphabet)
+            elif (k == 2):
+                self.ct = self.aristo_encoder(self.pt,alphabet,k_alph)
+            elif (k==3):
+                alph = self.gen_k_alphabet(self.key,0)
+                self.ct = self.aristo_encoder(self.pt,k_alph,alph)
 
 
     # generates a random alphabet
@@ -46,9 +51,21 @@ class Aristocrat:
         return ''.join(alpha)
     
 
-    # generate K-k alphabet with key & shift
-    def gen_k_alphabet(self,k,key,shift):
-        return
+    # generate K alphabet with key & shift
+    def gen_k_alphabet(self,key,shift):
+        # method to circular shift string fwd by n
+        def circle_shift(s):
+            ns = ''
+            for i in range(-shift,-shift+26):
+                ns += s[i%26]
+            return ns
+        
+        s = key
+        for i in list(alphabet):
+            if (i not in list(s)):
+                s += i
+        s = circle_shift(s)
+        return s
 
 
     # transforms s to ciphertext using pt-ct alphabet mapping
@@ -59,6 +76,7 @@ class Aristocrat:
         ret = ''
         for i in range(len(pt)):
             mapping[pt[i]] = ct[i]
+        print(mapping)
         
         l = list(s)
         for i in l:
@@ -71,8 +89,8 @@ class Aristocrat:
 
 
     def random_aristo(self,s):
-        ct = self.gen_random_alphabet()
-        return self.aristo_encoder(s,alphabet,ct)
+        ct_alph = self.gen_random_alphabet()
+        return self.aristo_encoder(s,alphabet,ct_alph)
 
-a = Aristocrat("abc",1,"type")
+a = Aristocrat("Do not dwell upon those",1,"type","plot",2,3)
 print(a.ct)
