@@ -8,13 +8,18 @@ from cipher_utils import *
 class Affine:
     # string pt, string ct, int val, tuple (int,int) key
     
-    def __init__(self, type, plaintext, value, key, bonus):
+    def __init__(self, type, plaintext, value, key, bonus, crib=None):
         self.type = type
         self.pt = plaintext
         self.val = value
         self.key = key
         self.ct = self.affine_encode(plaintext, key[0], key[1])
         self.bonus = bonus
+        
+        if (crib == None):
+            pass
+        else:
+            self.crib = crib
 
     def affine_encode(self,s,A,B):
         ret = ''
