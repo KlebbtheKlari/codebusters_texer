@@ -57,3 +57,13 @@ def string_to_nums(s):
     return ret
 
 
+# returns s split into blocks of length size
+# input: string, int
+# output: string
+def blockify(s,size):
+    ret = ''
+    for i in range(len(s)):
+        ret += s[i]
+        if (i%size == size-1):
+            ret += " "
+    return ret
