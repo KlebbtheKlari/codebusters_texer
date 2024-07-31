@@ -3,23 +3,33 @@
 ######
 
 from cipher_utils import *
+from math import floor
 
 class Porta:
     # string pt, string ct, int val, string key, string type, bool bonus
     
     def __init__(self, type,val,plaintext,key,bonus,crib=None):
-        self.type = type
+        self.type = answerize(type)
         self.val = val
         self.pt = answerize(plaintext)
         self.key = answerize(key)
         self.bonus = bonus
         
         if (crib == None):
-            self.ct = blockify(self.porta_encode(self.pt,self.key),len(key))
+            self.ct = blockify(self.porta_encode(self.pt,self.key),len(self.key))
         else:
             self.crib = crib
             self.ct = blockify(self.porta_encode(self.pt,self.key),5)
     
     
     def porta_encode(self,pt,key):
-        return
+        l = len(key)
+        ret = ''
+        
+        for i in range(len(pt)):
+            n = letter_to_num(pt[i])
+            if (n < 13):
+                ret += A0Z25( (n + floor(letter_to_num(key[i%l])/2) %13) + 13 )
+            else:
+                ret += A0Z25( (n - floor(letter_to_num(key[i%l])/2) %13) + 13 )
+        return ret
