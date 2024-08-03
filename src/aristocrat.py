@@ -76,7 +76,7 @@ class Aristocrat:
         ret = ''
         for i in range(len(pt)):
             mapping[pt[i]] = ct[i]
-        print(mapping)
+        # print(mapping)
         
         l = list(s)
         for i in l:
@@ -92,5 +92,5 @@ class Aristocrat:
         ct_alph = self.gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
 
-a = Aristocrat("Do not dwell upon those",1,"type","plot",2,3)
-print(a.ct)
+# a = Aristocrat("Do not dwell upon those",1,"type","plot",2,3)
+# print(a.ct)
