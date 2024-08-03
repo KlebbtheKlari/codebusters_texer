@@ -10,7 +10,7 @@ class Porta:
     
     def __init__(self, type,val,plaintext,key,bonus,crib=None):
         self.type = answerize(type)
-        self.val = val
+        self.val = int(val)
         self.pt = answerize(plaintext)
         self.key = answerize(key)
         self.bonus = bonus
