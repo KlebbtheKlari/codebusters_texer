@@ -18,7 +18,7 @@ class Porta:
         if (crib == None):
             self.ct = blockify(self.porta_encode(self.pt,self.key),len(self.key))
         else:
-            self.crib = crib
+            self.crib = answerize(crib)
             self.ct = blockify(self.porta_encode(self.pt,self.key),5)
     
     
