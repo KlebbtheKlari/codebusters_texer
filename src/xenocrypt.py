@@ -77,7 +77,7 @@ class Xenocrypt:
         ret = ''
         for i in range(len(pt)):
             mapping[pt[i]] = ct[i]
-        print(mapping)
+        # print(mapping)
         
         l = list(s)
         for i in l:

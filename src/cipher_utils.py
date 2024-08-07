@@ -5,6 +5,9 @@
 ######
 
 import re
+import random
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 # removes repeated letters in a string
 # input: string of letters in all caps (ex "EXAMPLE")
@@ -94,17 +97,50 @@ morse = {'A':'.-',
          'X':'-..-',
          'Y':'-.--',
          'Z':'--..',
-         '1':'.----', '2':'..---', '3':'...--','4':'....-', '5':'.....', '6':'-....','7':'--...', '8':'---..', '9':'----.','0':'-----'
+         '1':'.----', '2':'..---', '3':'...--','4':'....-', '5':'.....', '6':'-....','7':'--...', '8':'---..', '9':'----.','0':'-----',
+         ' ':''
          }
 
 def to_morse(s):
     s = s.upper()
     ret = ''
     for i in list(s):
-        if (re.search("[a-zA-Z]",i)):
+        if (re.search("[a-zA-Z ]",i)):
             i = i.upper()
             ret += morse[i]
             ret += 'x'
-        else:
-            ret += 'x'
     return ret
+
+# generates a random alphabet
+# ensures that no letter is in the same position
+# as in the normal alphabet
+def gen_random_alphabet():
+    l = list(alphabet)
+    alpha = list(alphabet)
+    fixed = False
+    
+    while(not fixed):
+        fixed = True
+        random.shuffle(alpha)
+        for i in range(len(alpha)):
+            if alpha[i] == l[i]:
+                fixed = False
+    
+    return ''.join(alpha)
+
+
+# generate K alphabet with key & shift
+def gen_k_alphabet(key,shift):
+    # method to circular shift string fwd by n
+    def circle_shift(s):
+        ns = ''
+        for i in range(-shift,-shift+26):
+            ns += s[i%26]
+        return ns
+    
+    s = key
+    for i in list(alphabet):
+        if (i not in list(s)):
+            s += i
+    s = circle_shift(s)
+    return s
