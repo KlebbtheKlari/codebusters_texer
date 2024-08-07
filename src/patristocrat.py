@@ -24,50 +24,15 @@ class Patristocrat:
             self.k = int(k)
             self.key = key.upper()
             self.shift = int(shift)
-            k_alph = self.gen_k_alphabet(self.key,self.shift)
+            k_alph = gen_k_alphabet(self.key,self.shift)
             if (k == 1):
                 self.ct = self.aristo_encoder(self.pt,k_alph,alphabet)
             elif (k == 2):
                 self.ct = self.aristo_encoder(self.pt,alphabet,k_alph)
             elif (k==3):
-                alph = self.gen_k_alphabet(self.key,0)
+                alph = gen_k_alphabet(self.key,0)
                 self.ct = self.aristo_encoder(self.pt,k_alph,alph)
         self.ct = blockify(self.ct,5)
-
-
-    # generates a random alphabet
-    # ensures that no letter is in the same position
-    # as in the normal alphabet
-    def gen_random_alphabet(self):
-        l = list(alphabet)
-        alpha = list(alphabet)
-        fixed = False
-        
-        while(not fixed):
-            fixed = True
-            random.shuffle(alpha)
-            for i in range(len(alpha)):
-                if alpha[i] == l[i]:
-                    fixed = False
-        
-        return ''.join(alpha)
-    
-
-    # generate K alphabet with key & shift
-    def gen_k_alphabet(self,key,shift):
-        # method to circular shift string fwd by n
-        def circle_shift(s):
-            ns = ''
-            for i in range(-shift,-shift+26):
-                ns += s[i%26]
-            return ns
-        
-        s = key
-        for i in list(alphabet):
-            if (i not in list(s)):
-                s += i
-        s = circle_shift(s)
-        return s
 
 
     # transforms s to ciphertext using pt-ct alphabet mapping
@@ -91,7 +56,7 @@ class Patristocrat:
 
 
     def random_aristo(self,s):
-        ct_alph = self.gen_random_alphabet()
+        ct_alph = gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
 
 # a = Patristocrat("These",1,"type","plot",2,3)
