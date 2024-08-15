@@ -144,3 +144,17 @@ def gen_k_alphabet(key,shift):
             s += i
     s = circle_shift(s)
     return s
+
+
+# Converts letter -> bacon string in As and Bs
+def baconify(s):
+    ret = ''
+    a = letter_to_num(s)
+    if (a >= 9):
+        a -= 1
+    if (a >= 20):
+        a -= 1
+    for i in range(5):
+        ret += str(a%2)
+        a = a//2
+    return ret[::-1]
