@@ -16,8 +16,12 @@ class Baconian:
             pass
         else:
             self.crib = answerize(crib)
+
         # amt == number of chars to a/b
         # by default, self.amt == 1
+        # for word bacon, amt == block size
+        # and if amt == 1, mapping is random
+        # (thus ABABABAB... is impossible)
         if (amt == None):
             self.amt = 1
         else:
@@ -41,7 +45,13 @@ class Baconian:
         
         return ret
     
+    # converts BINARY STRING to letter bacon ciphertext
+    # with amt letters as A and amt as B
+    # by default, the order of letters are random
+    # so A letters don't repeat regularly, neither do Bs
     def baconian_letters(self,ct,amt):
+        
+        # generate the letters for A's/B's
         a = gen_random_alphabet()
         a_lets = []
         b_lets = []
