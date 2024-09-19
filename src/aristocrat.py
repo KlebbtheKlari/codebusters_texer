@@ -22,7 +22,7 @@ class Aristocrat:
             self.k = int(k)
             self.key = key.upper()
             self.shift = int(shift)
-            k_alph = gen_k_alphabet(self.key,self.shift)
+            k_alph = gen_k_alphabet(strip_repeats(self.key),self.shift)
             if (k == 1):
                 self.ct = self.aristo_encoder(self.pt,k_alph,alphabet)
             elif (k == 2):
@@ -55,5 +55,5 @@ class Aristocrat:
         ct_alph = gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
 
-# a = Aristocrat("Do not dwell upon those",1,"type")
+# a = Aristocrat("Do not dwell upon those",5,"type","keyeee",4,1)
 # print(a.ct)

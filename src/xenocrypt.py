@@ -24,7 +24,7 @@ class Xenocrypt:
             self.k = int(k)
             self.key = key.upper()
             self.shift = int(shift)
-            k_alph = self.gen_k_alphabet(self.key,self.shift)
+            k_alph = self.gen_k_alphabet(strip_repeats(self.key),self.shift)
             if (k == 1):
                 self.ct = self.aristo_encoder(self.pt,k_alph,alphabet)
             elif (k == 2):
