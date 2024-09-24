@@ -65,3 +65,8 @@ class Hill:
                 v += num_to_letter(x%26)
             ret += v
         return ret
+    
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct

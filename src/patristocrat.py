@@ -58,6 +58,11 @@ class Patristocrat:
     def random_aristo(self,s):
         ct_alph = gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
+    
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct
 
 # a = Patristocrat("These",1,"type","plot",2,3)
 # print(a.ct)

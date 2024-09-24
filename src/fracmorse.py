@@ -39,5 +39,9 @@ class Fracmorse:
         
         return ret
     
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct
+    
 # f = Fracmorse('type',1,'card magic','sleight',False,'crib')
 # print(f.ct)

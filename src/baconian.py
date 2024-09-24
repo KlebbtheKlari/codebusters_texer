@@ -67,5 +67,10 @@ class Baconian:
                 ret += b_lets[random.randint(0,amt-1)]
         return ret
     
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct
+    
 # f = Baconian('letter',1,"XLB is tasty",False,2,'crib')
 # print(blockify(f.ct,5))

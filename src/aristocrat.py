@@ -54,6 +54,10 @@ class Aristocrat:
     def random_aristo(self,s):
         ct_alph = gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct
 
 # a = Aristocrat("Do not dwell upon those",5,"type","keyeee",4,1)
 # print(a.ct)

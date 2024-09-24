@@ -14,10 +14,6 @@ class Atbash:
         self.pt = plaintext
         self.val = value
         self.ct = self.atbash_encode(plaintext)
-    
-    # TODO: return the entire texed version
-    def __str__(self):
-        return self.ct
 
     def atbash_encode(self, s):
         ret = ''
@@ -30,3 +26,7 @@ class Atbash:
             else:
                 ret += i
         return ret
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct

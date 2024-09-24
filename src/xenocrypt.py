@@ -92,6 +92,11 @@ class Xenocrypt:
     def random_aristo(self,s):
         ct_alph = self.gen_random_alphabet()
         return self.aristo_encoder(s,alphabet,ct_alph)
+    
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct
 
 # a = Xenocrypt("Do not dwell upon those",1,"type","plot")
 # print(a.ct)

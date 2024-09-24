@@ -33,3 +33,8 @@ class Porta:
             else:
                 ret += A0Z25( (n - floor(letter_to_num(key[i%l])/2) %13) + 13 )
         return ret
+    
+    
+    # TODO: return the entire texed version
+    def __str__(self):
+        return self.ct

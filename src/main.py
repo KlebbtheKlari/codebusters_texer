@@ -15,13 +15,21 @@ import patristocrat
 import porta
 import xenocrypt
 
-# filename = ''
+filename = 'template.csv'
 
-# fields = []
-# rows = []
+fields = []
+rows = []
 
-# with open(filename,'r') as csvfile:
-#     csvreader = csv.reader(csvfile)
-#     fields = next(csvreader)
-#     for row in csvreader:
-#         rows.append(row)
+with open(filename,'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    fields = next(csvreader)
+    for row in csvreader:
+        rows.append(row)
+        
+
+out_filename = 'out.tex'
+out_file = open(out_filename,'w')
+
+
+for row in rows:
+    aristocrat.__str__()
