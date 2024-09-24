@@ -1,6 +1,6 @@
 #,Cipher,Type,Base,+5,Value,Bonus,Plaintext,Len,Key1,Key2,Key3,Notes
 T,ARISTOCRAT,DECODE,250,0,250,FALSE,Do not dwell upon those,0,keyeee,4,1,
-1,BACONIAN,DECODE,,0,0,FALSE,test,0,,asd,,
+1,CAESAR,DECODE,,0,0,FALSE,testing plaintext,0,,,,
 2,ARISTOCRAT,DECODE,,4,4,FALSE,,0,,,,
 3,ARISTOCRAT,DECODE,,0,0,FALSE,,0,,,,
 4,ARISTOCRAT,DECODE,,4,4,FALSE,,0,,,,

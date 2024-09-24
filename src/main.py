@@ -30,11 +30,12 @@ with open(filename,'r') as csvfile:
 out_filename = 'out.tex'
 out_file = open(out_filename,'w')
 
-
+count = 0
 for row in rows:
+    
     cipher = answerize(row[1])
     type = answerize(row[2])
-    value = row[5]
+    value = int(row[5])
     bonus = (row[6] == 'TRUE')
     pt = row[7]
     key1 = row[9]
@@ -111,3 +112,12 @@ for row in rows:
         question = 'TODO'
     
     print(question)
+    print()
+    print('\\vfill')
+    print()
+    print('\\uplevel{{\\hrulefill}}'.format(42))
+    print('\n')
+    
+    if (count%2 == 0):
+        print('\\newpage')
+    count += 1
