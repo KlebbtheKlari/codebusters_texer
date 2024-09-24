@@ -25,11 +25,11 @@ class Xenocrypt:
             self.key = key.upper()
             self.shift = int(shift)
             k_alph = self.gen_k_alphabet(strip_repeats(self.key),self.shift)
-            if (k == 1):
+            if (self.k == 1):
                 self.ct = self.aristo_encoder(self.pt,k_alph,alphabet)
-            elif (k == 2):
+            elif (self.k == 2):
                 self.ct = self.aristo_encoder(self.pt,alphabet,k_alph)
-            elif (k==3):
+            elif (self.k==3):
                 alph = self.gen_k_alphabet(self.key,0)
                 self.ct = self.aristo_encoder(self.pt,k_alph,alph)
 

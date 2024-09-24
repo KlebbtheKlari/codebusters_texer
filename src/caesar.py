@@ -13,7 +13,7 @@ class Caesar:
         if (sh == None):
             self.shift = randint(3,23)
         else:
-            self.shift = sh
+            self.shift = int(sh)
         self.ct = self.caesar_encode(plaintext, self.shift)
         
     def caesar_encode(self,s,shift):

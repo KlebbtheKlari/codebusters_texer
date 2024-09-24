@@ -27,7 +27,7 @@ class Baconian:
         else:
             self.amt = int(amt)
             
-        if (self.type == "LETTER"):
+        if (self.type == "DECODE"):
             self.ct = self.baconian_letters(self.bin,self.amt)
         elif (self.type == "SEQUENCE"):
             self.ct = 'seq'
