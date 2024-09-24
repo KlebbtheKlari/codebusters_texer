@@ -67,5 +67,5 @@ class Baconian:
                 ret += b_lets[random.randint(0,amt-1)]
         return ret
     
-f = Baconian('letter',1,"XLB is tasty",False,2,'crib')
-print(blockify(f.ct,5))
+# f = Baconian('letter',1,"XLB is tasty",False,2,'crib')
+# print(blockify(f.ct,5))
