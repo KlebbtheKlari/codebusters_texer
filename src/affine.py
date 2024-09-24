@@ -10,10 +10,10 @@ class Affine:
     
     def __init__(self, type, plaintext, value, keyA, keyB, bonus, crib=None):
         self.type = type
-        self.pt = plaintext
+        self.pt = answerize(plaintext)
         self.val = value
         self.key = (int(keyA), int(keyB))
-        self.ct = self.affine_encode(plaintext, self.key[0], self.key[1])
+        self.ct = blockify(self.affine_encode(plaintext, self.key[0], self.key[1]),5)
         self.bonus = bonus
         
         if (crib == None):
