@@ -116,7 +116,7 @@ for row in rows:
     print('\\vfill')
     print()
     print('\\uplevel{{\\hrulefill}}'.format(42))
-    print('\n')
+    print()
     
     if (count%2 == 0):
         print('\\newpage')

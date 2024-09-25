@@ -29,4 +29,26 @@ class Atbash:
     
     # TODO: return the entire texed version
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        ret += '\\question['
+        ret += str(self.val)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Atbash}} cipher'.format(42)
+        ret += '.'
+        
+        ret += '\n'
+        ret += '\n'
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\n'
+        ret += self.ct
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        return ret
