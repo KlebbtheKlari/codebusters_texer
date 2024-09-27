@@ -111,13 +111,13 @@ for row in rows:
         # add a TODO to typeset manually
         question = 'TODO'
     
-    print(question)
-    print()
-    print('\\vfill')
-    print()
-    print('\\uplevel{{\\hrulefill}}'.format(42))
-    print()
+    out_file.write(question.__str__())
+    out_file.write('\n')
+    out_file.write('\\vfill')
+    out_file.write('\n')
+    out_file.write('\\uplevel{{\\hrulefill}}'.format(42))
+    out_file.write('\n')
     
     if (count%2 == 0):
-        print('\\newpage')
+        out_file.write('\\newpage')
     count += 1
