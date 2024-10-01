@@ -26,7 +26,8 @@ class Fracmorse:
         morse_string = morse_string.replace('-','1')
         morse_string = morse_string.replace('x','2')
         
-        # TODO: Strip extra x at end before padding
+        morse_string = morse_string[:-1]
+        print(morse_string)
         
         # pad extra x's at the end if needed
         while (len(morse_string) % 3 != 0):
@@ -41,9 +42,11 @@ class Fracmorse:
             ret += alphabet[9*x+3*y+z]
             ret += '  '
             
+            # TODO: better word end detection
             l = [x,y,z]
-            if (l.count(2) >= 2 and counter > 15):
+            if (l.count(2) >= 2 and counter > 12):
                 ret += '\n'
+                counter = 0
             counter += 1
         
         return ret
@@ -95,5 +98,5 @@ class Fracmorse:
         
         return ret
     
-f = Fracmorse('type',1,'This is a sample sentence','sleight',False,'crib')
+f = Fracmorse('type',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
 print(f.ct)
