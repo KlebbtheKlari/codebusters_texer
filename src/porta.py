@@ -14,13 +14,11 @@ class Porta:
         self.pt = answerize(plaintext)
         self.key = answerize(key)
         self.bonus = bonus
-        self.has_crib = False
         
         if (crib == None):
             self.ct = blockify(self.porta_encode(self.pt,self.key),len(self.key))
         else:
             self.crib = answerize(crib)
-            self.has_crib = True
             self.ct = blockify(self.porta_encode(self.pt,self.key),5)
             self.ct_crib = answerize(self.porta_encode(self.crib,self.key))
     
@@ -49,7 +47,7 @@ class Porta:
         ret += '] Decode this sentence that was encoded using the \\textbf{{Porta}} cipher'.format(42)
         
         # TODO: if a crib exists, add it
-        if (self.has_crib):
+        if (self.type == 'CRIB'):
             ret += '. The [numbers] ciphertext letters '
             ret += str(self.ct_crib)
             ret += ' decode to the plaintext '
