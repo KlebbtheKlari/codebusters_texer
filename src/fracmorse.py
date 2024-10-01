@@ -26,17 +26,25 @@ class Fracmorse:
         morse_string = morse_string.replace('-','1')
         morse_string = morse_string.replace('x','2')
         
+        # TODO: Strip extra x at end before padding
+        
         # pad extra x's at the end if needed
         while (len(morse_string) % 3 != 0):
             morse_string += '2'
         
         # read chars from alphabet using ternary
+        counter = 0
         for i in range(0,len(morse_string),3):
             x = int(morse_string[i])
             y = int(morse_string[i+1])
             z = int(morse_string[i+2])
             ret += alphabet[9*x+3*y+z]
             ret += '  '
+            
+            l = [x,y,z]
+            if (l.count(2) >= 2 and counter > 15):
+                ret += '\n'
+            counter += 1
         
         return ret
     
@@ -70,7 +78,22 @@ class Fracmorse:
         ret += '\n'
         ret += '}'
         
+        # TODO: fracmorse table
+        '''
+        \begin{center}
+        \begin{tabular}{|m{2cm}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|}
+        \hline
+        Replacement&&&&&&&&&&&&&&&&&&&&&&&&&&\\
+        \hline
+        &$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+        &$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$\\
+        &$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$\\
+        \hline
+        \end{tabular}
+        \end{center}
+        '''
+        
         return ret
     
-f = Fracmorse('type',1,'card magic','sleight',False,'crib')
+f = Fracmorse('type',1,'This is a sample sentence','sleight',False,'crib')
 print(f.ct)
