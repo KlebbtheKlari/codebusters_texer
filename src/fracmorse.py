@@ -36,12 +36,41 @@ class Fracmorse:
             y = int(morse_string[i+1])
             z = int(morse_string[i+2])
             ret += alphabet[9*x+3*y+z]
+            ret += '  '
         
         return ret
     
     # TODO: return the entire texed version
+    # TODO: crib not at beginning
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        ret += '\\question['
+        ret += str(self.val)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Fractionated Morse}} cipher'.format(42)
+        
+        # add crib
+        if (self.type == 'CRIB'):
+            ret += '. The plaintext begins with the letters '
+            ret += str(self.crib)
+        ret += '.'
+        
+        ret += '\n'
+        ret += '\n'
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\n'
+        ret += self.ct
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        return ret
     
-# f = Fracmorse('type',1,'card magic','sleight',False,'crib')
-# print(f.ct)
+f = Fracmorse('type',1,'card magic','sleight',False,'crib')
+print(f.ct)
