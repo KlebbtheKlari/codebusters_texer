@@ -39,6 +39,7 @@ class Caesar:
         ret += str(self.val)
         ret += '] Decode this sentence that was encoded using the \\textbf{{Caesar}} cipher'.format(42)
         
+        # if a crib exists, add it
         if (self.crib):
             ret += ' with a shift of '
             ret += str(self.shift())
