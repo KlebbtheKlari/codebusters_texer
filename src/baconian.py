@@ -102,5 +102,5 @@ class Baconian:
         
         return ret
     
-f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",True,2,'crib')
-print(f)
+# f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",True,2,'crib')
+# print(f)

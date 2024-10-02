@@ -152,7 +152,7 @@ class Xenocrypt:
                 elif (i >= 15):
                     o += chr(i+64)
                 else:
-                    o += 'Ñ'
+                    o += chr(209)
             o += '\\\\'
             o += '\n'
             o += '\\hline'
@@ -165,7 +165,7 @@ class Xenocrypt:
                 elif (i > 15):
                     o += str(self.ct.count(chr(i+65-1)))
                 else:
-                    o += str(self.ct.count('Ñ'))
+                    o += str(self.ct.count(chr(209)))
             o += '\\\\'
             o += '\n'
             o += '\\hline'
@@ -200,7 +200,7 @@ class Xenocrypt:
                 elif (i >= 15):
                     o += chr(i+64)
                 else:
-                    o += 'Ñ'
+                    o += chr(209)
             o += '\\\\'
             o += '\n'
             o += '\\hline'
@@ -213,7 +213,7 @@ class Xenocrypt:
                 elif (i > 15):
                     o += str(self.ct.count(chr(i+65-1)))
                 else:
-                    o += str(self.ct.count('Ñ'))
+                    o += str(self.ct.count(chr(209)))
             
             ret += o
             ret += '\\\\'
@@ -225,5 +225,5 @@ class Xenocrypt:
         
         return ret
 
-a = Xenocrypt('this is a sample plaintext',100,'type','key',4,2)
-print(a)
+# a = Xenocrypt('this is a sample plaintext',100,'type','key',4,2)
+# print(a)

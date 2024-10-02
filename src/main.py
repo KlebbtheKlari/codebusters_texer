@@ -109,7 +109,7 @@ for row in rows:
     
     else:
         # add a TODO to typeset manually
-        question = 'TODO'
+        question = '\n' + 'TODO' + '\n'
     
     out_file.write(question.__str__())
     out_file.write('\n')

@@ -130,5 +130,5 @@ class Fracmorse:
         
         return ret
     
-f = Fracmorse('crib',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
-print(f)
+# f = Fracmorse('crib',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
+# print(f)
