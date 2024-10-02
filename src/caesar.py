@@ -51,7 +51,7 @@ class Caesar:
         # ciphertext
         ret += '{{\\setstretch{{2}}'.format(42)
         ret += '\n'
-        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
         ret += '\n'
         ret += self.ct
         ret += '\n'

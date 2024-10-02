@@ -68,9 +68,34 @@ class Baconian:
         return ret
     
     
-    # TODO: return the entire texed version
+    # TODO: words, sequence
+    # only letter implemented for now
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        ret += '\\question['
+        ret += str(self.val)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Baconian}} cipher'.format(42)
+        
+        # TODO: if a crib exists, add it
+        
+        ret += '.'
+        ret += '\n'
+        ret += '\n'
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2.5}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
+        ret += '\n'
+        ret += blockify(self.ct,45)
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        return ret
     
-# f = Baconian('letter',1,"XLB is tasty",False,2,'crib')
-# print(blockify(f.ct,5))
+f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",False,2,'crib')
+print(f)

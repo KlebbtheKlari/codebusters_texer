@@ -78,7 +78,7 @@ class Fracmorse:
         # ciphertext
         ret += '{{\\setstretch{{2.5}}'.format(42)
         ret += '\n'
-        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
         ret += '\n'
         ret += self.ct
         ret += '\n'
