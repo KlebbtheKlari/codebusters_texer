@@ -61,6 +61,11 @@ class Porta:
             ret += '}}'.format(42)
         ret += '.'
         
+        # if bonus, say so.
+        if (self.bonus):
+            ret += '\n'
+            ret += '\\emph{{$\\bigstar$\\textbf{{This question is a special bonus question.}} }}'.format(42)
+        
         ret += '\n'
         ret += '\n'
         

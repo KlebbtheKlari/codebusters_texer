@@ -86,6 +86,11 @@ class Hill:
         ret += '}}'.format(42)
         ret += '.'
         
+        # if bonus, say so.
+        if (self.bonus):
+            ret += '\n'
+            ret += '\\emph{{$\\bigstar$\\textbf{{This question is a special bonus question.}} }}'.format(42)
+        
         # add encoding matrix
         ret += '\n'
         ret += '\\['

@@ -81,6 +81,11 @@ class Baconian:
         # TODO: if a crib exists, add it
         
         ret += '.'
+        # if bonus, say so.
+        if (self.bonus):
+            ret += '\n'
+            ret += '\\emph{{$\\bigstar$\\textbf{{This question is a special bonus question.}} }}'.format(42)
+        
         ret += '\n'
         ret += '\n'
         
@@ -97,5 +102,5 @@ class Baconian:
         
         return ret
     
-f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",False,2,'crib')
+f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",True,2,'crib')
 print(f)
