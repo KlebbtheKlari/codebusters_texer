@@ -15,8 +15,12 @@ class Hill:
         self.ct = self.hill_encode()
         self.bonus = bonus
         
-        if (self.size > 4):
+        if (self.size > 2):
             self.decmatrix = self.invert()
+            self.deckey = ''
+            for i in self.decmatrix:
+                for j in i:
+                    self.deckey += A0Z25(j)
     
     
     def key_to_matrix(self):
@@ -69,4 +73,88 @@ class Hill:
     
     # TODO: return the entire texed version
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        ret += '\\question['
+        ret += str(self.val)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Hill}} cipher'.format(42)
+            
+        # give the key
+        ret += ' with the key \\textbf{{'.format(42)
+        ret += self.key
+        ret += '}}'.format(42)
+        ret += '.'
+        
+        # add encoding matrix
+        ret += '\n'
+        ret += '\\['
+        ret += '\n'
+        ret += '\\begin{{pmatrix}}'.format(42)
+        for i in range(len(self.key)):
+            ret += self.key[i]
+            if ((i+1)% self.size == 0 and i < self.size*self.size -1):
+                ret += '\\\\'
+            elif (i == self.size*self.size-1):
+                break
+            else:
+                ret += '&'
+        ret += '\\end{{pmatrix}} = '.format(42)
+        
+        ret += '\\begin{{pmatrix}}'.format(42)
+        for i in range(len(self.key)):
+            ret += str(letter_to_num(self.key[i]))
+            if ((i+1)% self.size == 0 and i < self.size*self.size -1):
+                ret += '\\\\'
+            elif (i == self.size*self.size-1):
+                break
+            else:
+                ret += '&'
+        ret += '\\end{{pmatrix}}'.format(42)
+        
+        # if 3x3, add decoding matrix.
+        if (len(self.key) == 9):
+            ret += '\\quad '
+            ret += '\\quad'
+            ret += '\\begin{{pmatrix}}'.format(42)
+            for i in range(len(self.key)):
+                ret += str(letter_to_num(self.key[i]))
+                if ((i+1)% self.size == 0 and i < self.size*self.size -1):
+                    ret += '\\\\'
+                elif (i == self.size*self.size-1):
+                    break
+                else:
+                    ret += '&'
+            ret += '\\end{{pmatrix}}^{{-1}} = '.format(42)
+            
+            ret += '\\begin{{pmatrix}}'.format(42)
+            for i in range(len(self.key)):
+                ret += str(letter_to_num(self.deckey[i]))
+                if ((i+1)% self.size == 0 and i < self.size*self.size -1):
+                    ret += '\\\\'
+                elif (i == self.size*self.size-1):
+                    break
+                else:
+                    ret += '&'
+            ret += '\\end{{pmatrix}}'.format(42)
+        
+        ret += '\n'
+        ret += '\\]'
+        ret += '\n'
+        
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\n'
+        ret += self.ct
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        return ret
+    
+h = Hill('plaintext',128,'UNSC',False)
+print(h)
