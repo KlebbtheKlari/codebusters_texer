@@ -20,6 +20,7 @@ class Patristocrat:
         
         if (k == None):
             self.ct = self.random_aristo(plaintext)
+            self.k = 0
         else:
             self.k = int(k)
             self.key = key.upper()
@@ -62,7 +63,81 @@ class Patristocrat:
     
     # TODO: return the entire texed version
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        if (self.type == 'DECODE'):
+            ret += '\\question['
+            ret += str(self.val)
+            ret += '] Solve this \\textbf{{Patristocrat}}'.format(42)
+            if (self.k > 0):
+                ret += ' that was encoded using a K'
+                ret += str(self.k)
+                ret += ' alphabet'
+            ret += '.'
+        else:
+            ret += '\\question['
+            ret += str(self.val)
+            ret += '] This \\textbf{{Patristocrat}} was encoded using a K'.format(42)
+            ret += str(self.k)
+            ret += ' alphabet '
+            ret += ' with a key \\todo{{Add key enumerations}}.'.format(42)
+            ret += ' What key was used?'
+        
+        ret += '\n'
+        ret += '\n'
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
+        ret += '\n'
+        ret += self.ct
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        # freq table
+        ret += '\n'
+        
+        ret += '\\begin{{tabular}}{{|m{{2cm}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|}}'.format(42)
+        ret += '\n'
+        ret += '\\hline'
+        ret += '\n'
+        
+        o = ''''''
+        for i in range(26):
+            o += '&'
+            o += chr(i+65)
+        o += '\\\\'
+        o += '\n'
+        o += '\\hline'
+        o += '\n'
+        o += 'Frequency'
+        for i in range(26):
+            o += '&'
+            o += str(self.ct.count(chr(i+65)))
+        o += '\\\\'
+        o += '\n'
+        o += '\\hline'
+        o += '\n'
+        o += 'Replacement'
+        for i in range(26):
+            o += '&'
+        
+        ret += o
+        ret += '\\\\'
+        ret += '\n'
+        
+        ret += '\\hline'
+        ret += '\n'
+        ret += '\\end{{tabular}}'.format(42)
+        
+        return ret
 
-# a = Patristocrat("These",1,"type","plot",2,3)
-# print(a.ct)
+# a = Patristocrat("abcdefghijklmnopqrstuvwxyz",1,"type","plot",2,3)
+# print(a)
