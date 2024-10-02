@@ -27,7 +27,6 @@ class Fracmorse:
         morse_string = morse_string.replace('x','2')
         
         morse_string = morse_string[:-1]
-        print(morse_string)
         
         # pad extra x's at the end if needed
         while (len(morse_string) % 3 != 0):
@@ -42,11 +41,16 @@ class Fracmorse:
             ret += alphabet[9*x+3*y+z]
             ret += '  '
             
-            # TODO: better word end detection
-            l = [x,y,z]
-            if (l.count(2) >= 2 and counter > 12):
-                ret += '\n'
-                counter = 0
+            # (roughly) breaks by words
+            # could be improved in the future, maybe.
+            if (i >= 3):
+                l = [str(x)+str(y)]
+                l.append(str(y)+str(z))
+                l.append(morse_string[i-1]+str(x))
+                l.append(morse_string[i-2]+morse_string[i-1])
+                if (l.count('22') >= 1 and counter > 12):
+                    ret += '\n'
+                    counter = 0
             counter += 1
         
         return ret
@@ -63,15 +67,16 @@ class Fracmorse:
         
         # add crib
         if (self.type == 'CRIB'):
-            ret += '. The plaintext begins with the letters '
+            ret += '. The plaintext begins with the letters \\textbf{{'.format(42)
             ret += str(self.crib)
+            ret += '}}'.format(42)
         ret += '.'
         
         ret += '\n'
         ret += '\n'
         
         # ciphertext
-        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '{{\\setstretch{{2.5}}'.format(42)
         ret += '\n'
         ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
         ret += '\n'
@@ -82,21 +87,43 @@ class Fracmorse:
         ret += '}'
         
         # TODO: fracmorse table
-        '''
-        \begin{center}
-        \begin{tabular}{|m{2cm}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|m{9.675pt}|}
-        \hline
-        Replacement&&&&&&&&&&&&&&&&&&&&&&&&&&\\
-        \hline
-        &$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
-        &$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$&$\times$&$\newmoon$&$\newmoon$&$\newmoon$&$-$&$-$&$-$&$\times$&$\times$\\
-        &$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$&$\times$&$\newmoon$&$-$\\
-        \hline
-        \end{tabular}
-        \end{center}
-        '''
+        ret += '\n'
+        ret += '\\begin{{center}}'.format(42)
+        ret += '\n'
+        
+        ret += '\\begin{{tabular}}{{|m{{2cm}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|'.format(42)
+        ret += 'm{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|m{{9.675pt}}|}}'.format(42)
+        
+        ret += '\n'
+        ret += '\\hline'
+        ret += '\n'
+        ret += 'Replacement&&&&&&&&&&&&&&&&&&&&&&&&&&\\\\'
+        ret += '\n'
+        ret += '\\hline'
+        ret += '\n'
+        
+        ret += '&$\\newmoon$&$\\newmoon$&$\\newmoon$&$\\newmoon$&$\\newmoon$&$\\newmoon$&$\\newmoon$&'.format(42)
+        ret += '$\\newmoon$&$\\newmoon$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$-$&$\\times$&$\\times$&$\\times$&'.format(42)
+        ret += '$\\times$&$\\times$&$\\times$&$\\times$&$\\times$\\\\'.format(42)
+        ret += '\n'
+        
+        ret += '&$\\newmoon$&$\\newmoon$&$\\newmoon$&$-$&$-$&$-$&$\\times$&$\\times$&$\\times$&$\\newmoon$&$\\newmoon$&'.format(42)
+        ret += '$\\newmoon$&$-$&$-$&$-$&$\\times$&$\\times$&$\\times$&$\\newmoon$&$\\newmoon$&$\\newmoon$&$-$&$-$&$-$&$\\times$&$\\times$\\\\'.format(42)
+        ret += '\n'
+        
+        ret += '&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&'.format(42)
+        ret += '$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$&$\\times$&$\\newmoon$&$-$\\\\'.format(42)
+        
+        ret += '\n'
+        ret += '\\hline'
+        ret += '\n'
+        ret += '\\end{{tabular}}'.format(42)
+        ret += '\n'
+        ret += '\\end{{center}}'.format(42)
         
         return ret
     
-f = Fracmorse('type',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
-print(f.ct)
+f = Fracmorse('crib',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
+print(f)
