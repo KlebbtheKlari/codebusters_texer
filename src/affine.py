@@ -33,9 +33,46 @@ class Affine:
                 ret += i
         return ret
     
-    # TODO: return the entire texed version
+    # TODO: crib, tbd
     def __str__(self):
-        return self.ct
+        ret = ''
+        
+        # question statement
+        ret += '\\question['
+        ret += str(self.val)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Affine}} cipher'.format(42)
+        
+        if (self.type == 'CRIB'):
+            ret += '. '
+            ret += 'The ciphertext letters '
+            ret += self.affine_encode(self.crib,self.key[0],self.key[1])
+            ret += ' decode to the plaintext letters '
+            ret += self.crib
+            ret += '.'
+        # if no crib exists, give the key
+        else:
+            ret += ' with the key $(A,B) = ('.format(42)
+            ret += str(self.key[0])
+            ret += ','.format(42)
+            ret += str(self.key[1])
+            ret += ')$'
+            ret += '.'
+        
+        ret += '\n'
+        ret += '\n'
+        
+        # ciphertext
+        ret += '{{\\setstretch{{2}}'.format(42)
+        ret += '\n'
+        ret += '\\begin{{lstlisting}}[breaklines]'.format(42)
+        ret += '\n'
+        ret += self.ct
+        ret += '\n'
+        ret += '\\end{{lstlisting}}'.format(42)
+        ret += '\n'
+        ret += '}'
+        
+        return ret
 
 # a = Affine('type','plaintext',12,'11','3',False)
 # print(a)

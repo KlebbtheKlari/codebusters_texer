@@ -36,7 +36,6 @@ class Porta:
         return ret
     
     
-    # TODO: return the entire texed version
     # TODO: Add the position of crib
     def __str__(self):
         ret = ''

@@ -156,5 +156,5 @@ class Hill:
         
         return ret
     
-h = Hill('plaintext',128,'UNSC',False)
-print(h)
+# h = Hill('plaintext',128,'UNSC',False)
+# print(h)
