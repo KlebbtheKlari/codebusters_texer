@@ -13,7 +13,7 @@ class Affine:
         self.pt = answerize(plaintext)
         self.val = value
         self.key = (int(keyA), int(keyB))
-        self.ct = blockify(self.affine_encode(plaintext, self.key[0], self.key[1]),5)
+        self.ct = blockify(self.affine_encode(self.pt, self.key[0], self.key[1]),5)
         self.bonus = bonus
         
         if (crib == None):
@@ -78,5 +78,5 @@ class Affine:
         
         return ret
 
-# a = Affine('type','plaintext',12,'11','3',False)
-# print(a)
+a = Affine('type','a.',12,'7','3',False)
+print(a)
