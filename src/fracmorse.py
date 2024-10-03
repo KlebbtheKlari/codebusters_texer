@@ -18,7 +18,7 @@ class Fracmorse:
     def fracmorse_encode(self,pt,key):
         ret = '' # string to be returned
         
-        alphabet = gen_k_alphabet(key,0) # from aristocrat.py
+        alphabet = gen_k_alphabet(strip_repeats(key),0) # from aristocrat.py
         morse_string = to_morse(pt) # util
         
         # convert morse -> ternary
@@ -130,5 +130,5 @@ class Fracmorse:
         
         return ret
     
-# f = Fracmorse('crib',1,'here is a quote at random, i dont know if this works yet','sleight',False,'crib')
-# print(f)
+f = Fracmorse('crib',1,'blah.','blah',False,'blah')
+print(f)
