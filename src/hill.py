@@ -3,7 +3,7 @@ from math import sqrt
 
 class Hill:
     def __init__(self, plaintext,value,key,bonus):
-        self.pt = plaintext.upper()
+        self.pt = answerize(plaintext)
         self.key = key.upper()
         self.size = int(sqrt(len(self.key)))
         # pad pt so it's a multiple of size
@@ -161,5 +161,5 @@ class Hill:
         
         return ret
     
-# h = Hill('plaintext',128,'UNSC',False)
-# print(h)
+# h = Hill('blah',128,'keyd',False)
+# print(h.pt)
