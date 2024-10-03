@@ -19,7 +19,7 @@ class Patristocrat:
         self.type = answerize(type)
         
         if (k == None):
-            self.ct = self.random_aristo(plaintext)
+            self.ct = self.random_aristo(self.pt)
             self.k = 0
         else:
             self.k = int(k)
@@ -139,5 +139,8 @@ class Patristocrat:
         
         return ret
 
-# a = Patristocrat("abcdefghijklmnopqrstuvwxyz",1,"type","plot",2,3)
-# print(a)
+# a = Patristocrat("blah",1,"DECODE")
+# print(a.pt)
+# b = gen_random_alphabet()
+# print(blockify(a.aristo_encoder(a.pt,b,alphabet),5))
+# print(a.ct)

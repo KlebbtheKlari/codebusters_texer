@@ -19,7 +19,7 @@ class Xenocrypt:
         self.type = answerize(type)
         
         if (k == None):
-            self.ct = self.random_aristo(plaintext)
+            self.ct = self.random_aristo(self.pt)
             self.k = 0
         else:
             self.k = int(k)
