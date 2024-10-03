@@ -30,9 +30,9 @@ class Porta:
         for i in range(len(pt)):
             n = letter_to_num(pt[i])
             if (n < 13):
-                ret += A0Z25( (n + floor(letter_to_num(key[i%l])/2) %13) + 13 )
+                ret += A0Z25( ((n + floor(letter_to_num(key[i%l])/2)) %13) + 13 )
             else:
-                ret += A0Z25( (n - floor(letter_to_num(key[i%l])/2) %13) + 13 )
+                ret += A0Z25( (n - floor(letter_to_num(key[i%l])/2)) %13 )
         return ret
     
     
@@ -81,3 +81,6 @@ class Porta:
         ret += '}'
         
         return ret
+
+p = Porta('type',1,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','BISW',False)
+print(p.ct)
