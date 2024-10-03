@@ -82,5 +82,5 @@ class Porta:
         
         return ret
 
-p = Porta('type',1,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','BISW',False)
-print(p.ct)
+# p = Porta('type',1,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','BISW',False)
+# print(p.ct)
