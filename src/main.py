@@ -28,6 +28,7 @@ with open(filename,'r') as csvfile:
         
 
 out_filename = 'out.tex'
+open(out_filename,"w").close()
 out_file = open(out_filename,'w')
 
 count = 0
