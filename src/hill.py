@@ -78,7 +78,7 @@ class Hill:
         # question statement
         ret += '\\question['
         ret += str(self.val)
-        ret += '] Decode this sentence that was encoded using the \\textbf{{Hill}} cipher'.format(42)
+        ret += '] Decode this phrase that was encoded using the \\textbf{{Hill}} cipher'.format(42)
             
         # give the key
         ret += ' with the key \\textbf{{'.format(42)
