@@ -15,7 +15,7 @@ import patristocrat
 import porta
 import xenocrypt
 
-filename = 'template.csv'
+filename = 'blank.csv'
 
 fields = []
 rows = []

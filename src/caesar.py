@@ -42,7 +42,7 @@ class Caesar:
         # if a crib exists, add it
         if (self.crib):
             ret += ' with a shift of '
-            ret += str(self.shift())
+            ret += str(self.shift)
         ret += '.'
         
         ret += '\n'
