@@ -134,5 +134,5 @@ class Aristocrat:
         
         return ret
 
-# a = Aristocrat("Do not dwell upon those",5,"type","keyeee",4,1)
+# a = Aristocrat("blah",231,"type","PANDEMIC",10,1)
 # print(a)

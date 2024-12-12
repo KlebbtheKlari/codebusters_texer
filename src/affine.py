@@ -78,5 +78,5 @@ class Affine:
         
         return ret
 
-a = Affine('type','a.',12,'7','3',False)
-print(a)
+# a = Affine('type','a.',12,'7','3',False)
+# print(a)

@@ -130,5 +130,5 @@ class Fracmorse:
         
         return ret
     
-f = Fracmorse('crib',1,'blah.','blah',False,'blah')
-print(f)
+# f = Fracmorse('crib',1,'blah.','blah',False,'blah')
+# print(f)

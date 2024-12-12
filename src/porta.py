@@ -20,7 +20,10 @@ class Porta:
         else:
             self.crib = answerize(crib)
             self.ct = blockify(self.porta_encode(self.pt,self.key),5)
-            self.ct_crib = answerize(self.porta_encode(self.crib,self.key))
+            x = answerize(self.ct)
+            # print(x)
+            self.ct_crib = x[(len(x) - len(self.crib)):]
+            # print(self.ct_crib)
     
     
     def porta_encode(self,pt,key):

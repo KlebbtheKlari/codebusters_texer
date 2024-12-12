@@ -1,4 +1,5 @@
 import csv
+import codecs
 
 from cipher_utils import *
 
@@ -15,7 +16,7 @@ import patristocrat
 import porta
 import xenocrypt
 
-filename = 'blank.csv'
+filename = 'src/main.csv'
 
 fields = []
 rows = []
@@ -29,7 +30,7 @@ with open(filename,'r') as csvfile:
 
 out_filename = 'out.tex'
 open(out_filename,"w").close()
-out_file = open(out_filename,'w')
+out_file = codecs.open(out_filename,'w','utf-8')
 
 count = 0
 for row in rows:
