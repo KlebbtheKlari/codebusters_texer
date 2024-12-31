@@ -25,7 +25,7 @@ def strip_repeats(s):
 def answerize(s):
     regex = re.compile('[^a-zA-Z]')
     ret = regex.sub('',s)
-    return ret.upper()\
+    return ret.upper()
 
 
 # returns the modular inverse of a modulo m

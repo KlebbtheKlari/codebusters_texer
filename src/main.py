@@ -86,8 +86,8 @@ for row in rows:
         else:
             question = porta.Porta(type,value,pt,key1,bonus)
     
-    # elif (cipher == 'COLUMNAR'):
-    #     pass
+    elif (cipher == 'COLUMNAR'):
+        question = columnar.Columnar(type,value,pt,bonus,key2,key1)
     # elif (cipher == 'NIHILIST'):
     #     pass
     

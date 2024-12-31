@@ -30,30 +30,18 @@ class Columnar:
         return ret
     
     
-    # TODO: Move to string
     def __str__(self):
         ret = ''
         
         # question statement
         ret += '\\question['
         ret += str(self.val)
-        ret += '] Decode this sentence that was encoded using the \\textbf{{Porta}} cipher'.format(42)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Columnar}} cipher.'.format(42)
         
-        # TODO: if a crib exists, add it
-        if (self.type == 'CRIB'):
-            ret += '. The [numbers] ciphertext letters '
-            ret += str(self.ct_crib)
-            ret += ' decode to the plaintext '
-            ret += str(self.crib)
-            ret += '. Note that the while the ciphertext is in blocks of 5 letters,'
-            ret += ' the key may not be 5 letters long'
-            
-        # if no crib exists, give the key
-        else:
-            ret += ' with the key \\textbf{{'.format(42)
-            ret += self.key
-            ret += '}}'.format(42)
-        ret += '.'
+        # crib
+        ret += 'The letters '
+        ret += str(self.crib)
+        ret += ' appear in the plaintext.'
         
         # if bonus, say so.
         if (self.bonus):
@@ -76,5 +64,5 @@ class Columnar:
         
         return ret
 
-p = Columnar('type',1,'ABCDEFGHIJKLMNOPQR',False,'ABC',3)
-print(p.ct)
+# p = Columnar('type',1,'ABCDEFGHIJKLMNOPQR',False,'ABC',3)
+# print(p.ct)
