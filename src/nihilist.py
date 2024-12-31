@@ -74,6 +74,3 @@ class Nihilist:
         ret += '}'
         
         return ret
-
-p = Columnar('type',1,'ABCDEFGHIJKLMNOPQR',False,'ABC',3)
-print(p.ct)

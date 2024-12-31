@@ -66,9 +66,9 @@ class Aristocrat:
             ret += str(self.val)
             ret += '] Solve this \\textbf{{Aristocrat}}'.format(42)
             if (self.k > 0):
-                ret += ' that was encoded using a K'
+                ret += ' that was encoded using a \\textbf{{K'.format(42)
                 ret += str(self.k)
-                ret += ' alphabet'
+                ret += '}} alphabet'.format(42)
             ret += '.'
         else:
             ret += '\\question['
@@ -105,6 +105,9 @@ class Aristocrat:
         ret += '\n'
         
         o = ''''''
+        if (self.k == 1 or self.k == 3):
+            o += 'K'
+            o += str(self.k)
         for i in range(26):
             o += '&'
             o += chr(i+65)

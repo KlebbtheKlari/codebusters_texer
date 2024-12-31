@@ -36,12 +36,12 @@ class Columnar:
         # question statement
         ret += '\\question['
         ret += str(self.val)
-        ret += '] Decode this sentence that was encoded using the \\textbf{{Columnar}} cipher.'.format(42)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Complete Columnar}} cipher.'.format(42)
         
         # crib
-        ret += 'The letters '
+        ret += ' The letters \\textbf{{'.format(42)
         ret += str(self.crib)
-        ret += ' appear in the plaintext.'
+        ret += '}} appear in the plaintext.'.format(42)
         
         # if bonus, say so.
         if (self.bonus):

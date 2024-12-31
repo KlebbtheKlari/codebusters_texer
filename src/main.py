@@ -21,7 +21,7 @@ filename = 'src/main.csv'
 fields = []
 rows = []
 
-with open(filename,'r') as csvfile:
+with open(filename,'r',encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile)
     fields = next(csvreader)
     for row in csvreader:
@@ -119,6 +119,8 @@ for row in rows:
     out_file.write('\n')
     out_file.write('\\uplevel{{\\hrulefill}}'.format(42))
     out_file.write('\n')
+    
+    print(cipher,"DONE")
     
     if (count%2 == 0):
         out_file.write('\\newpage')
