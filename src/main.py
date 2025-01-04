@@ -88,8 +88,11 @@ for row in rows:
     
     elif (cipher == 'COLUMNAR'):
         question = columnar.Columnar(type,value,pt,bonus,key2,key1)
-    # elif (cipher == 'NIHILIST'):
-    #     pass
+    elif (cipher == 'NIHILIST'):
+        if (key3 != ''):
+            question = nihilist.Nihilist(type,value,pt,bonus,key2,key1,key3)
+        else:
+            question = nihilist.Nihilist(type,value,pt,bonus,key2,key1)
     
     elif (cipher == 'HILL'):
         question = hill.Hill(pt,value,key1,bonus)
