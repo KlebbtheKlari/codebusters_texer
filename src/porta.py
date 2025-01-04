@@ -21,9 +21,8 @@ class Porta:
             self.crib = answerize(crib)
             self.ct = blockify(self.porta_encode(self.pt,self.key),5)
             x = answerize(self.ct)
-            # print(x)
-            self.ct_crib = x[(len(x) - len(self.crib)):]
-            # print(self.ct_crib)
+            self.crib_start = self.pt.find(self.crib)
+            self.ct_crib = x[self.crib_start:self.crib_start+len(self.crib)]
     
     
     def porta_encode(self,pt,key):
@@ -39,7 +38,6 @@ class Porta:
         return ret
     
     
-    # TODO: Add the position of crib
     def __str__(self):
         ret = ''
         
@@ -50,7 +48,11 @@ class Porta:
         
         # TODO: if a crib exists, add it
         if (self.type == 'CRIB'):
-            ret += '. The [numbers] ciphertext letters '
+            ret += '. The '
+            ret += ordinal(self.crib_start)
+            ret += ' to '
+            ret += ordinal(self.crib_start + len(self.crib))
+            ret += ' ciphertext letters '
             ret += str(self.ct_crib)
             ret += ' decode to the plaintext '
             ret += str(self.crib)
@@ -85,5 +87,8 @@ class Porta:
         
         return ret
 
-# p = Porta('type',1,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','BISW',False)
+# p = Porta("CRIB",1,"TEST PLAINTEXT","ACE",False,"PLAIN")
+# print(blockify(p.pt,5))
 # print(p.ct)
+# print(p.ct_crib)
+# print(p)

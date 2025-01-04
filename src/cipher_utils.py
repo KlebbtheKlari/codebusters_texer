@@ -167,3 +167,12 @@ def debaconify(s):
     if (a >= 20):
         a += 1
     return A0Z25(a)
+
+
+# converts int to ordinal int
+def ordinal(n):
+    if 11 <= (n % 100) <= 13:
+        suffix = 'th'
+    else:
+        suffix = ['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]
+    return str(n) + suffix
