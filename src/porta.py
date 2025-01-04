@@ -49,12 +49,12 @@ class Porta:
         # if a crib exists, add it
         if (self.type == 'CRIB'):
             ret += '. The '
-            ret += ordinal(self.crib_start)
+            ret += ordinal(self.crib_start+1)
             ret += ' to '
             ret += ordinal(self.crib_start + len(self.crib))
             ret += ' ciphertext letters '
             ret += str(self.ct_crib)
-            ret += ' decode to the plaintext '
+            ret += ' decode to the plaintext letters '
             ret += str(self.crib)
             ret += '. Note that the while the ciphertext is in blocks of 5 letters,'
             ret += ' the key may not be 5 letters long'

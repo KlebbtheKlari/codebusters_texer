@@ -21,6 +21,8 @@ class Nihilist:
             pass
         else:
             self.crib = answerize(crib)
+            self.crib_start = self.pt.find(self.crib)
+            self.ct_crib = ' '.join(self.ct[self.crib_start:self.crib_start + len(self.crib)])
     
     def nihilist_encode(self,pt,poly,key):
         ret = []
@@ -47,23 +49,29 @@ class Nihilist:
         # question statement
         ret += '\\question['
         ret += str(self.val)
-        ret += '] Decode this sentence that was encoded using the \\textbf{{Porta}} cipher'.format(42)
+        ret += '] Decode this sentence that was encoded using the \\textbf{{Nihilist Substitution}} cipher'.format(42)
         
         # TODO: if a crib exists, add it
         if (self.type == 'CRIB'):
-            ret += '. The [numbers] ciphertext letters '
+            ret += ' using a (non-Polybius) key that was 3 to 7 letters long inclusive'
+            ret += '. The '
+            ret += ordinal(self.crib_start+1)
+            ret += ' to '
+            ret += ordinal(self.crib_start + len(self.crib))
+            ret += ' ciphertext numbers '
             ret += str(self.ct_crib)
-            ret += ' decode to the plaintext '
+            ret += ' decode to the plaintext letters '
             ret += str(self.crib)
-            ret += '. Note that the while the ciphertext is in blocks of 5 letters,'
-            ret += ' the key may not be 5 letters long'
+            ret += '.'
             
         # if no crib exists, give the key
         else:
-            ret += ' with the key \\textbf{{'.format(42)
+            ret += ' with the Polybius key \\textbf{{'.format(42)
+            ret += self.poly
+            ret += '}} and the key \\textbf{{'.format(42)
             ret += self.key
             ret += '}}'.format(42)
-        ret += '.'
+            ret += '.'
         
         # if bonus, say so.
         if (self.bonus):
@@ -86,5 +94,5 @@ class Nihilist:
         
         return ret
     
-n = Nihilist("DECODE",1,"TEST PLAINTEXT",True,"POLYBIYUS","KEY")
-print(n)
+# n = Nihilist("DECODE",1,"TEST PLAINTEXT",True,"POLYBIYUS","KEY","TEST")
+# print(n)
