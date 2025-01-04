@@ -146,7 +146,7 @@ def gen_k_alphabet(key,shift):
     return s
 
 
-# Converts letter -> bacon string in As and Bs
+# Converts letter -> bacon string in 0s and 1s
 def baconify(s):
     ret = ''
     a = letter_to_num(s)
@@ -158,3 +158,12 @@ def baconify(s):
         ret += str(a%2)
         a = a//2
     return ret[::-1]
+
+# converts bacon string in 0s and 1s -> letter
+def debaconify(s):
+    a = sum(pow(2,4-i)*int(s[i]) for i in range(len(s)))
+    if (a >= 8):
+        a += 1
+    if (a >= 20):
+        a += 1
+    return A0Z25(a)

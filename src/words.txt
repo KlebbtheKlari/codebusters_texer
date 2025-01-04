@@ -6396,8 +6396,6 @@ kines
 kings
 kingy
 kinin
-kinks
-kinky
 kinos
 kiore
 kiosk
@@ -9248,7 +9246,6 @@ pedal
 pedes
 pedis
 pedon
-pedos
 pedro
 peece
 peeks
@@ -9267,7 +9264,6 @@ peeve
 peevo
 peggy
 peghs
-pegma
 pegos
 peine
 peins
@@ -11650,7 +11646,6 @@ sighs
 sight
 sigil
 sigla
-sigma
 signa
 signs
 sigri

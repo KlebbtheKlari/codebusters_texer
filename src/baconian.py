@@ -30,9 +30,9 @@ class Baconian:
         if (self.type == "DECODE"):
             self.ct = self.baconian_letters(self.bin,self.amt)
         elif (self.type == "SEQUENCE"):
-            self.ct = 'seq'
+            self.ct = 'sequence'
         else:
-            self.ct = 'word'
+            self.ct = self.baconian_words(self.pt,self.amt)
             
         
     def baconian_encode(self,pt):
@@ -44,6 +44,7 @@ class Baconian:
             ret += baconify(i)
         
         return ret
+    
     
     # converts BINARY STRING to letter bacon ciphertext
     # with amt letters as A and amt as B
@@ -68,8 +69,83 @@ class Baconian:
         return ret
     
     
-    # TODO: words, sequence
-    # only letter implemented for now
+    # given lists of which letters
+    # are zeroes and which are ones,
+    # 
+    def build_wordlist(self,zeroes,ones):
+        ret = {}
+        words = [answerize(word) for word in open('src/words.txt')]
+        
+        for let in alphabet:
+            if let != 'I' and let != 'U':
+                ret[let] = []
+        
+        for word in words:
+            bin = ''
+            # convert word to baconian via 0/1
+            for i in word:
+                if i in zeroes:
+                    bin += '0'
+                else:
+                    bin += '1'
+            a = sum(pow(2,4-i)*int(bin[i]) for i in range(len(bin)))
+            if a >= 24:
+                continue
+            # print(word,bin)
+            
+            # de-baconify bin
+            ret[debaconify(bin)].append(word)
+        # print(ret['A'])
+        
+        return ret
+    
+    
+    # encodes plaintext directly to words
+    def baconian_words(self,pt,amt):
+        ret = ''
+        
+        # build the alphabet
+        zeroes = []
+        ones = []
+        if (amt > 1):
+            idx = 0
+            c = 0
+            start = random.randint(0,1)
+            while idx < 26:
+                c += 1
+                if start == 0:
+                    zeroes.append(alphabet[idx])
+                else:
+                    ones.append(alphabet[idx])
+                if c >= amt:
+                    start = not start
+                    c = 0
+                idx += 1
+        else:
+            alph = gen_random_alphabet()
+            zeroes = list(alph[:13])
+            ones = list(alph[13:])
+        
+        # categorize each word in words.txt
+        wordlist = self.build_wordlist(zeroes,ones)
+        # print(''.join(zeroes))
+        # print(''.join(ones))
+        
+        # match each letter to a random word
+        for i in pt:
+            let = i
+            if i == 'I':
+                let = 'J'
+            if i == 'U':
+                let = 'V'
+            r = random.randint(0,len(wordlist[let]))
+            ret += wordlist[let][r]
+            ret += ' '
+        
+        return ret
+    
+    
+    # TODO: sequence
     def __str__(self):
         ret = ''
         
@@ -102,5 +178,5 @@ class Baconian:
         
         return ret
     
-# f = Baconian('decode',1,"XLB is tastyasoidjhoaidhgoiuadhg",True,2,'crib')
-# print(f)
+# f = Baconian('word',1,"STIR FRY",True,1,'crib')
+# print(f.ct)
