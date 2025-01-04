@@ -100,7 +100,7 @@ morse = {'A':'.-',
          '1':'.----', '2':'..---', '3':'...--','4':'....-', '5':'.....', '6':'-....','7':'--...', '8':'---..', '9':'----.','0':'-----',
          ' ':''
          }
-
+# converts s to morse code 
 def to_morse(s):
     s = s.upper()
     ret = ''
@@ -131,14 +131,14 @@ def gen_random_alphabet():
 
 # generate K alphabet with key & shift
 def gen_k_alphabet(key,shift):
-    # method to circular shift string fwd by n
+    # circular shift string fwd by shift
     def circle_shift(s):
         ns = ''
         for i in range(-shift,-shift+26):
             ns += s[i%26]
         return ns
     
-    s = key
+    s = strip_repeats(key)
     for i in list(alphabet):
         if (i not in list(s)):
             s += i

@@ -30,6 +30,8 @@ class Aristocrat:
                 self.ct = self.aristo_encoder(self.pt,alphabet,k_alph)
             elif (self.k == 3):
                 alph = gen_k_alphabet(self.key,0)
+                # print(alph)
+                # print(k_alph)
                 self.ct = self.aristo_encoder(self.pt,k_alph,alph)
 
     # transforms s to ciphertext using pt-ct alphabet mapping
@@ -136,6 +138,3 @@ class Aristocrat:
         ret += '\\end{{tabular}}'.format(42)
         
         return ret
-
-# a = Aristocrat("blah",231,"type","PANDEMIC",10,1)
-# print(a)

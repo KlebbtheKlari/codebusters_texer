@@ -1,18 +1,18 @@
 ######
-# Porta!
+# Columnar!
 ######
 
 from cipher_utils import *
 from math import floor
 
-class Columnar:
-    # string pt, string ct, int val, string key, string type, bool bonus
-    
+class Columnar:    
     def __init__(self, type,val,plaintext,bonus,crib,cols):
         self.type = answerize(type)
         self.val = int(val)
         self.pt = answerize(plaintext)
         self.cols = int(cols)
+        while (len(self.pt) % self.cols != 0):
+            self.pt += 'X'
         self.bonus = bonus
         
         self.crib = answerize(crib)
@@ -63,6 +63,3 @@ class Columnar:
         ret += '}'
         
         return ret
-
-# p = Columnar('type',1,'ABCDEFGHIJKLMNOPQR',False,'ABC',3)
-# print(p.ct)
