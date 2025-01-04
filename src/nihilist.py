@@ -15,16 +15,27 @@ class Nihilist:
         self.poly = answerize(poly)
         self.key = answerize(key)
         self.bonus = bonus
+        self.ct = self.nihilist_encode(self.pt,self.poly,self.key)
         
         if (crib == None):
-            self.ct = blockify
+            pass
         else:
             self.crib = answerize(crib)
-            self.ct = blockify(self.nihilist_encode(self.pt,self.poly,self.key),1)
     
     def nihilist_encode(self,pt,poly,key):
-        ret = ''
-        cts = []
+        ret = []
+        
+        cts = {}
+        poly_alpha = gen_k_alphabet(poly,0)
+        poly_alpha = poly_alpha.replace("J","") # combine I/J
+        idx = 0
+        for i in range(1,6):
+            for j in range(1,6):
+                cts[poly_alpha[idx]] = 10*i + j
+                idx += 1
+        
+        for i in range(len(pt)):
+            ret.append(str(cts[pt[i]] + cts[key[i%len(key)]]))
         
         return ret
     
@@ -67,10 +78,13 @@ class Nihilist:
         ret += '\n'
         ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
         ret += '\n'
-        ret += self.ct
+        ret += ' '.join(self.ct)
         ret += '\n'
         ret += '\\end{{lstlisting}}'.format(42)
         ret += '\n'
         ret += '}'
         
         return ret
+    
+n = Nihilist("DECODE",1,"TEST PLAINTEXT",True,"POLYBIYUS","KEY")
+print(n)

@@ -46,7 +46,7 @@ class Porta:
         ret += str(self.val)
         ret += '] Decode this sentence that was encoded using the \\textbf{{Porta}} cipher'.format(42)
         
-        # TODO: if a crib exists, add it
+        # if a crib exists, add it
         if (self.type == 'CRIB'):
             ret += '. The '
             ret += ordinal(self.crib_start)
