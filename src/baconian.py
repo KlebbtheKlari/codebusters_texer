@@ -138,7 +138,7 @@ class Baconian:
                 let = 'J'
             if i == 'U':
                 let = 'V'
-            r = random.randint(0,len(wordlist[let]))
+            r = random.randint(0,len(wordlist[let])-1)
             ret += wordlist[let][r]
             ret += ' '
         

@@ -128,3 +128,26 @@ for row in rows:
     if (count%2 == 0):
         out_file.write('\\newpage')
     count += 1
+
+    
+# make key
+key_filename = 'key.tex'
+open(key_filename,"w").close()
+key_file = codecs.open(key_filename,'w','utf-8')
+
+for i in range(len(rows)):
+    pt = rows[i][7]
+    pt.strip()
+    pt.replace('\n','')
+    if (i >= 1):
+        key_file.write('\\question ')
+        key_file.write(pt)
+        key_file.write('\n')
+    else:
+        key_file.write('\\textbf{Timed Question.} ')
+        key_file.write(pt)
+        key_file.write('\n')
+        key_file.write('\n')
+        key_file.write('\\begin{{questions}}'.format(42))
+        key_file.write('\n')
+key_file.write('\\end{{questions}}'.format(42))
