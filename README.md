@@ -11,9 +11,8 @@ Current usage[^2]:
 4. Output will be in a file called `out.tex`
 5. Copy-paste `out.tex` to `out.tex` in the Overleaf template
 6. Move the timed question to `main.tex` just before the `\begin{questions}`
-7. Edit whatever you need to on the TeX template. Good luck!
-
-Currently, generation of answer key is not supported, but that may change in the future.
+7. Copy and paste the answer key output `key.tex` to `key.tex` in the Overleaf template
+8. Edit whatever you need to on the TeX template. Good luck!
 
 [^1]: The TeX template may be fully here on Git in the future
 [^2]: I will probably move this to cmd line in the future but this is easier for me to test with rn idk
