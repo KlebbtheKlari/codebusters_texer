@@ -30,7 +30,6 @@ class Caesar:
                 ret += i
         return ret
     
-    # TODO: return the entire texed version
     def __str__(self):
         ret = ''
         

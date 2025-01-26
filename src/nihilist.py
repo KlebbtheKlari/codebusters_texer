@@ -42,7 +42,7 @@ class Nihilist:
         return ret
     
     
-    # TODO: Move to string
+    # TODO: TABLE
     def __str__(self):
         ret = ''
         

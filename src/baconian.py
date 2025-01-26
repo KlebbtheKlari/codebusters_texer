@@ -184,5 +184,5 @@ class Baconian:
         
         return ret
     
-f = Baconian('words',1,"In my mind iambs sound like heartbeats",True,1,'crib')
+f = Baconian('words',1,"",True,1,'crib')
 print(f)
