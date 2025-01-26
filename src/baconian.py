@@ -138,9 +138,12 @@ class Baconian:
                 let = 'J'
             if i == 'U':
                 let = 'V'
-            r = random.randint(0,len(wordlist[let])-1)
+            r = random.randint(1,len(wordlist[let])-1)
             ret += wordlist[let][r]
             ret += ' '
+        
+        if len(answerize(ret)) != 5*len(pt):
+            print(len(answerize(ret)),"bad")
         
         return ret
     
@@ -170,7 +173,10 @@ class Baconian:
         ret += '\n'
         ret += '\\begin{{lstlisting}}[breakindent=0pt,breaklines]'.format(42)
         ret += '\n'
-        ret += blockify(self.ct,45)
+        if (self.type == 'WORDS'):
+            ret += self.ct
+        else:
+            ret += blockify(self.ct,45)
         ret += '\n'
         ret += '\\end{{lstlisting}}'.format(42)
         ret += '\n'
@@ -178,5 +184,5 @@ class Baconian:
         
         return ret
     
-# f = Baconian('word',1,"STIR FRY",True,1,'crib')
-# print(f.ct)
+f = Baconian('words',1,"In my mind iambs sound like heartbeats",True,1,'crib')
+print(f)

@@ -43,11 +43,11 @@ class Affine:
         
         if (self.type == 'CRIB'):
             ret += '. '
-            ret += 'The ciphertext letters '
+            ret += 'The ciphertext letters \\textbf{{'.format(42)
             ret += self.affine_encode(self.crib,self.key[0],self.key[1])
-            ret += ' decode to the plaintext letters '
+            ret += '}} decode to the plaintext letters \\textbf{{'.format(42)
             ret += self.crib
-            ret += '.'
+            ret += '}}.'
         # if no crib exists, give the key
         else:
             ret += ' with the key $(A,B) = ('.format(42)
