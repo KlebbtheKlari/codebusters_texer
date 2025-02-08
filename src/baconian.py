@@ -184,5 +184,5 @@ class Baconian:
         
         return ret
     
-f = Baconian('words',1,"",True,1,'crib')
-print(f)
+# f = Baconian('words',1,"",True,1,'crib')
+# print(f)

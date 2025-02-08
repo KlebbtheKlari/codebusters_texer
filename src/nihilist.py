@@ -30,6 +30,7 @@ class Nihilist:
         cts = {}
         poly_alpha = gen_k_alphabet(poly,0)
         poly_alpha = poly_alpha.replace("J","") # combine I/J
+        new_pt = pt.replace("J","I")
         idx = 0
         for i in range(1,6):
             for j in range(1,6):
@@ -37,7 +38,7 @@ class Nihilist:
                 idx += 1
         
         for i in range(len(pt)):
-            ret.append(str(cts[pt[i]] + cts[key[i%len(key)]]))
+            ret.append(str(cts[new_pt[i]] + cts[key[i%len(key)]]))
         
         return ret
     
