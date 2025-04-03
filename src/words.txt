@@ -1119,7 +1119,6 @@ gamin
 gamma
 gamut
 gangs
-gaped
 gapes
 gases
 gasps
@@ -1909,7 +1908,6 @@ peers
 pelts
 penal
 pence
-penis
 penny
 peons
 perch
@@ -2714,7 +2712,6 @@ tenor
 tense
 tenth
 tents
-tepee
 tepid
 terms
 terse

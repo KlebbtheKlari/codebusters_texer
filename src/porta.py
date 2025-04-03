@@ -56,7 +56,7 @@ class Porta:
             ret += str(self.ct_crib)
             ret += '}} decode to the plaintext letters \\textbf{{'.format(42)
             ret += str(self.crib)
-            ret += '}}. Note that the while the ciphertext is in blocks of 5 letters,'
+            ret += '}}. Note that the while the ciphertext is in blocks of 5 letters,'.format(42)
             ret += ' the key may not be 5 letters long'
             
         # if no crib exists, give the key
